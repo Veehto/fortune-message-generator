@@ -3,7 +3,7 @@ const randNumber = (number) => {
     return Math.floor(Math.random() * number);
   };
 
-// Store phrases as arrays in an object.
+// Store phrases as arrays in an object. Funcionality is applied as methods. To get fortune, just call the last method.
 const fortuneRepository = {
     goodFortune: ['An exciting opportunity lies ahead of you.', 'You will always be surrounded by true friends.', 
     'You should be able to undertake and complete anything.', 'Respect yourself and others will respect you.', 
@@ -42,7 +42,16 @@ const fortuneRepository = {
             let advice = this.advForBadFortune[randSelect];
             return advice;
         };        
+    },
+    yourFortune() {
+        const fortuneCookie = [];
+        fortuneCookie.push(`Your lucky number is ${this.luckyNumber()}.`);
+        fortuneCookie.push(`${this.checkFortune()}`);
+        fortuneCookie.push(`You should ${this.giveAdvice()}`);
+
+        const output = fortuneCookie.join(' ');
+        return(output);
     }
 };
 
-
+console.log(fortuneRepository.yourFortune());
